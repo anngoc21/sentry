@@ -91,14 +91,20 @@ class OrganizationIntegrationsPermission(OrganizationPermission):
         'DELETE': ['org:admin', 'org:integrations'],
     }
 
+ORG_ADMIN_SCOPE_MAP = {
+    'GET': ['org:admin'],
+    'POST': ['org:admin'],
+    'PUT': ['org:admin'],
+    'DELETE': ['org:admin'],
+}
+
 
 class OrganizationApiKeysPermission(OrganizationPermission):
-    scope_map = {
-        'GET': ['org:admin'],
-        'POST': ['org:admin'],
-        'PUT': ['org:admin'],
-        'DELETE': ['org:admin'],
-    }
+    scope_map = ORG_ADMIN_SCOPE_MAP
+
+
+class OrganizationAuthProvidersPermission(OrganizationPermission):
+    scope_map = ORG_ADMIN_SCOPE_MAP
 
 
 class OrganizationEndpoint(Endpoint):
